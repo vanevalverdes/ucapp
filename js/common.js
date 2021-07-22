@@ -1,4 +1,4 @@
-const serverUrl = 'http://localhost:3000/';
+const serverUrl = 'https://uc-lac.com/app/';
 function apiClient(url, options) {
     options = options || {};
     if (!('fetch' in window)) {
@@ -136,7 +136,7 @@ function displayNotification(title, body) {
 function createNotification(title, body) {
     const options = {
         body: body,
-        icon: 'img/logo-512.png',
+        icon: 'app/img/logo-512.png',
         vibrate: [100, 50, 100]
     };
     swRegistration.showNotification(title, options);

@@ -4,7 +4,7 @@
     "name": "Progressive Expenses",
     "short_name": "PE",
     "description": "A simple progressive expense app to track your expenses",
-    "start_url": "http://localhost:3000/?utm_source=pwa&utm_medium=pwasite&utm_campaign=start",
+    "start_url": "https://uc-lac.com/app?utm_source=pwa&utm_medium=pwasite&utm_campaign=start",
     "scope": "/",
     "display": "standalone",
     "orientation": "any",
@@ -14,17 +14,17 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "http://localhost:3000/img/logo-144.png",
+            "src": "https://uc-lac.com/app/img/logo-144.png",
             "type": "image/png",
             "sizes": "144x144"
         },
         {
-            "src": "http://localhost:3000/img/logo-194.png",
+            "src": "https://uc-lac.com/app/img/logo-194.png",
             "type": "image/png",
             "sizes": "194x194"
         },
         {
-            "src": "http://localhost:3000/img/logo-512.png",
+            "src": "https://uc-lac.com/app/img/logo-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

@@ -1,4 +1,4 @@
-importScripts('./js/lib/workbox-sw-6.1.1.js');
+importScripts('./app/js/lib/workbox-sw-6.1.1.js');
 
 (function() {
     'use strict';
@@ -9,16 +9,16 @@ importScripts('./js/lib/workbox-sw-6.1.1.js');
 
 	    const options = {
 	        body: 'Revisa el nuevo gasto del viaje',
-	        icon: 'img/logo-512.png',
+	        icon: 'app/img/logo-512.png',
 	        vibrate: [100, 50, 100],
 	        data: {
 	            primaryKey: 2
 	        },
 	        actions: [
 	            {action: 'explore', title: 'Ir al sitio',
-	                icon: 'img/check.png'},
+	                icon: 'app/img/check.png'},
 	            {action: 'close', title: 'Cerrar la notificación',
-	                icon: 'img/xmark.png'}
+	                icon: 'app/img/xmark.png'}
 	        ]
 	    };
 
@@ -38,10 +38,10 @@ importScripts('./js/lib/workbox-sw-6.1.1.js');
 	self.addEventListener('sync', function(event) {
 	    if (event.tag === 'delete-expenses') {
 	        event.waitUntil(
-	            fetch('/api/expense', {method: "delete"})
+	            fetch('/app/api/expense', {method: "delete"})
 	            .then((response) => {
 	                if (response.ok) {
-	                    broadcast({"action": "updateHome"})
+	                    broadcast({"action": "updateHome"}),
 	                }
 	            })
 	        );
@@ -56,7 +56,7 @@ importScripts('./js/lib/workbox-sw-6.1.1.js');
 	        notification.close();
 	    } else if (notification.data) {
 	        const primaryKey = notification.data.primaryKey;
-	        clients.openWindow('expense/' + primaryKey);
+	        clients.openWindow('app/expense/' + primaryKey);
 	        notification.close();
 	    }
 	});
