@@ -1,7 +1,7 @@
 function createExpenseElement(expense) {
     const element = document.createElement('li');
     element.className = 'list-group-item expense';
-    element.innerHTML = `<a href="/app/expense/${expense.id}">${expense.name}
+    element.innerHTML = `<a href="/expense/${expense.id}">${expense.name}
                             <span class="total">${getExpenseTotal(expense)}</span>
                         </a>`;
 
