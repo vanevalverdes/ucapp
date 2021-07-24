@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #2b2b2b;">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0">
+    <meta name="theme-color" content="#3A475B"/>
+    <link rel="manifest" href="/manifest.json">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v2" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v2" />
 
-    <title>Home - Progressive expenses</title>
+    <title>UniqueCollection</title>
 
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#3A475B"/>
@@ -20,52 +22,28 @@
     <link href="/css/custom.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="text-center" style="background-color: #2b2b2b;color:#ffffff;">
+    <form class="form-signin mt-4" id="formlogin"  action="#" method="post">
+      <img class="mb-4" src="/img/logoblancas.png" alt="" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+      <label for="inputEmail" class="sr-only">Usuario</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Usuario (email)" required="" name="loginname" autofocus="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;" autocomplete="off">
+      <label for="inputPassword" class="sr-only">Contraseña</label>
+      <input type="password" id="inputPassword" class="form-control mt-2" placeholder="Contraseña" required="" name="password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;" autocomplete="off">
 
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Progressive Expenses</a>
-      <span class="share" onclick="share('Te invito a probar Progressive Expenses')">Compartir</span>
-    </nav>
-
-    <div class="main-container">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-3">Progressive Expenses!</h1>
-          <p class="lead">Manten tus gastos de forma progresiva.</p>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col col-sm-10">
-            <ul id="expenses-list" class="list-group">
-              <li class="list-group-item total-row">Total <span class="total">20</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row justify-content-center mt-4 pb-4">
-          <div class="col col-sm-10">
-            <button id="add" class="btn btn-primary btn-block">Agregar gasto</button>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-4">
-          <div class="col col-sm-10">
-            <button id="delete" class="btn btn-outline-danger btn-block">Eliminar todos los gastos</button>
-          </div>
-        </div>
-      </div><!-- /.container -->
-    </div>
+      <input type="submit" value="Entrar" class="btn btn-lg btn-primary btn-block mt-5" />
+      <p class="mt-5 mb-3 text-muted">© 2021</p>
+    </form>
 
     <footer class="footer bg-dark">
       <div class="container py-4">
-        <span class="text-muted">Progressive expenses</span>
+        <span class="text-muted">Desarrollado por uniqueCollection.org</span>
       </div>
     </footer>
 
     <script src="/js/utils.js"></script>
     <script src="/js/common.js"></script>
-    <script src="/js/home.js"></script>
+    <script src="/js/login.js"></script>
     <script src="/js/sw-registration.js"></script>
   </body>
 </html>

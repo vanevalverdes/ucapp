@@ -39,3 +39,14 @@ body {
     position: absolute;
     width: 100%;
 }
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 15vh auto;
+}
+.btn-primary, .btn-primary:hover {
+    color: #fff;
+    background-color: #e06c26;
+    border-color: #e06c26;
+}

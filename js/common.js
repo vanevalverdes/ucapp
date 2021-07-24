@@ -1,4 +1,6 @@
-const serverUrl = 'https://uc-lac.com/app/';
+const serverUrl = 'https://www.uniquecollection.org/engine/api/UCAPI/';
+const authHash = get('authHash') || '';
+
 function apiClient(url, options) {
     options = options || {};
     if (!('fetch' in window)) {
@@ -35,6 +37,14 @@ function apiClient(url, options) {
     return fetch(url, options);
 }
 
+// GET Value in Request
+    function get(name){
+        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+           return decodeURIComponent(name[1]);
+     }
+
+
+/*
 function saveExpense(expense, cb) {
     apiClient(`${serverUrl}api/expense/${expense.id || ''}`, {
         method: 'POST',
@@ -53,26 +63,60 @@ function deleteExpenses(cb) {
         .then(cb)
         .catch(() => alert("Error deleting expenses"));
 }
+*/
+// convierte formulario a JSON
+function toJSONString( form ) {
+    var obj = {};
+    var elements = form.querySelectorAll( "input, select, textarea" );
+    for( var i = 0; i < elements.length; ++i ) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
 
-function getExpenses(cb) {
-    apiClient(`${serverUrl}api/expense`)
-        .catch(() => caches.match(`${serverUrl}api/expense`))
+        if( name ) {
+            obj[ name ] = value;
+        }
+    }
+
+    return JSON.stringify( obj );
+}
+
+function getRecords(cb) {
+    apiClient(`${serverUrl}query?querydef={"class":"Object","resultFields":["Id","Title","Accession_number"]}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authHash}`
+            }
+        })
+        .catch(() => caches.match(`${serverUrl}query?querydef={"class":"Object","resultFields":["Id","Title","Accession_number"]}`))
         .then(response => response.json())
         .then(cb);
 }
 
-function getExpense(expenseId, cb) {
-    apiClient(`${serverUrl}api/expense/${expenseId}`)
-        .catch(() => caches.match(`${serverUrl}api/expense/${expenseId}`))
+function getRecord(recordId, cb) {
+    apiClient(`${serverUrl}record/Object/${recordId}`)
+        .catch(() => caches.match(`${serverUrl}record/Object/${recordId}`))
         .then(response => response.json())
         .then(cb);
 }
 
-function createNewExpense() {
-    return {
-        name: 'Nombre',
-        details: []
-    };
+function createRecord(cb) {
+    apiClient(`${serverUrl}record/Object`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authHash}`
+        },
+        body: cb
+    })
+    .then(response => response.json())
+    .then(data => {
+        var output = document.getElementById( "output" );
+        console.log(data);
+        var id = data.key;
+        output.innerHTML = `Objeto Registrado con el ID ${id}`;
+    });
 }
 
 function getExpenseTotal(expense) {
